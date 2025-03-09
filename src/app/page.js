@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     fetchSnippets();
     checkAdminStatus();
-    toast.info("🚀 Welcome to CodeStorage by rrgs_dev!", { autoClose: 30000, position: "top-center" });
+    toast.info("🚀 Welcome to CodeStorage", { autoClose: 30000, position: "top-center" });
   }, []);
 
   const fetchSnippets = async () => {
