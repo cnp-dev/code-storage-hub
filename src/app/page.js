@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, Button, InputGroup } from "react-bootstrap";
+import { Search } from "react-bootstrap-icons";
 import SnippetForm from "../components/SnippetForm";
 import SnippetList from "../components/SnippetList";
 import ThemeToggle from "../components/ThemeToggle";
@@ -14,6 +15,7 @@ export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState("name");
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     fetchSnippets();
@@ -54,14 +56,24 @@ export default function Home() {
       <h1 className="text-center">Code Storage Hub</h1>
       <ThemeToggle theme={theme} setTheme={setTheme} />
       
-      <Form className="my-3">
-        <Form.Control
-          type="text"
-          placeholder="Search by name or language..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </Form>
+      <div className="d-flex justify-content-end mb-3">
+        <Button variant="outline-secondary" onClick={() => setShowSearch(!showSearch)}>
+          <Search size={20} />
+        </Button>
+      </div>
+      
+      {showSearch && (
+        <Form className="mb-3">
+          <InputGroup>
+            <Form.Control
+              type="text"
+              placeholder="Search by name or language..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </InputGroup>
+        </Form>
+      )}
       
       <Form.Select
         className="mb-3"
