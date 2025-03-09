@@ -1,17 +1,24 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Form, Button, Card } from "react-bootstrap";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark, coy } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Container, Form } from "react-bootstrap";
+import SnippetForm from "../components/SnippetForm";
+import SnippetList from "../components/SnippetList";
+import ThemeToggle from "../components/ThemeToggle";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [snippets, setSnippets] = useState([]);
-  const [newSnippet, setNewSnippet] = useState({ name: "", language: "", code: "" });
   const [theme, setTheme] = useState("dark");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("name");
 
   useEffect(() => {
     fetchSnippets();
+    checkAdminStatus();
+    toast.info("🚀 Welcome to CodeStorage by rrgs_dev!", { autoClose: 3000, position: "top-center" });
   }, []);
 
   const fetchSnippets = async () => {
@@ -23,73 +30,50 @@ export default function Home() {
     }
   };
 
-  const addSnippet = async () => {
-    if (!newSnippet.name || !newSnippet.language || !newSnippet.code) {
-      alert("Please fill all fields");
-      return;
-    }
-    try {
-      await axios.post("/api/snippets", newSnippet);
-      setNewSnippet({ name: "", language: "", code: "" });
-      fetchSnippets();
-    } catch (error) {
-      console.error("Error adding snippet:", error);
-    }
+  const checkAdminStatus = async () => {
+    // Simulate checking admin role (Replace with real API call)
+    setIsAdmin(true); // Change to `false` for normal users
   };
 
+  const filteredSnippets = snippets
+    .filter(snippet =>
+      snippet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      snippet.language.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOption === "name") {
+        return a.name.localeCompare(b.name);
+      } else {
+        return a.language.localeCompare(b.language);
+      }
+    });
+
   return (
-    <Container className="mt-4">
+    <Container className={`mt-4 ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"}`}>
+      <ToastContainer />
       <h1 className="text-center">Code Storage Hub</h1>
-      <Form>
-        <Form.Group className="mb-2">
-          <Form.Label>Snippet Name</Form.Label>
-          <Form.Control
-            type="text"
-            value={newSnippet.name}
-            onChange={(e) => setNewSnippet({ ...newSnippet, name: e.target.value })}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Language</Form.Label>
-          <Form.Select
-            value={newSnippet.language}
-            onChange={(e) => setNewSnippet({ ...newSnippet, language: e.target.value })}
-          >
-            <option value="">Select Language</option>
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="cpp">C++</option>
-            <option value="csharp">C#</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Code</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={5}
-            value={newSnippet.code}
-            onChange={(e) => setNewSnippet({ ...newSnippet, code: e.target.value })}
-          />
-        </Form.Group>
-
-        <Button onClick={addSnippet} className="w-100">Add Snippet</Button>
+      <ThemeToggle theme={theme} setTheme={setTheme} />
+      
+      <Form className="my-3">
+        <Form.Control
+          type="text"
+          placeholder="Search by name or language..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </Form>
-
-      <h2 className="mt-4">Saved Snippets</h2>
-      {snippets.length === 0 && <p>No snippets available.</p>}
-      {snippets.map((snippet) => (
-        <Card key={snippet._id} className="mt-3">
-          <Card.Body>
-            <Card.Title>{snippet.name} ({snippet.language})</Card.Title>
-            <SyntaxHighlighter language={snippet.language} style={theme === "dark" ? dark : coy}>
-              {snippet.code}
-            </SyntaxHighlighter>
-          </Card.Body>
-        </Card>
-      ))}
+      
+      <Form.Select
+        className="mb-3"
+        value={sortOption}
+        onChange={(e) => setSortOption(e.target.value)}
+      >
+        <option value="name">Sort by Name</option>
+        <option value="language">Sort by Language</option>
+      </Form.Select>
+      
+      {isAdmin && <SnippetForm fetchSnippets={fetchSnippets} />}
+      <SnippetList snippets={filteredSnippets} theme={theme} fetchSnippets={fetchSnippets} isAdmin={isAdmin} />
     </Container>
   );
 }
