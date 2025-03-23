@@ -7,7 +7,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function SnippetList({ snippets, theme, fetchSnippets, isAdmin }) {
+export default function SnippetList({ snippets, theme, fetchSnippets }) {
   const [selectedSnippet, setSelectedSnippet] = useState(null);
 
   const deleteSnippet = async (id) => {
@@ -47,10 +47,9 @@ export default function SnippetList({ snippets, theme, fetchSnippets, isAdmin })
             <Button variant="success" size="sm" className="ms-2" onClick={() => copyToClipboard(snippet.code)}>
               Copy Code
             </Button>
-            
-              <Button variant="danger" size="sm" className="ms-2" onClick={() => deleteSnippet(snippet._id)}>
-                Delete
-              </Button>
+            <Button variant="danger" size="sm" className="ms-2" onClick={() => deleteSnippet(snippet._id)}>
+              Delete
+            </Button>
           </Card.Body>
         </Card>
       ))}
