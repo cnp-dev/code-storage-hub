@@ -25,14 +25,19 @@ export async function POST(req) {
 }
 
 // ✅ DELETE: Delete a snippet
-export async function DELETE(req) {
+export async function DELETE(req, { params }) {
   await connectToDatabase();
-  const { id } = await req.json();
 
-  const deletedSnippet = await Snippet.findByIdAndDelete(id);
-  if (!deletedSnippet) {
-    return NextResponse.json({ error: "Snippet not found" }, { status: 404 });
+  const { id } = params;
+
+  try {
+    const deletedSnippet = await Snippet.findByIdAndDelete(id);
+    if (!deletedSnippet) {
+      return NextResponse.json({ error: "Snippet not found" }, { status: 404 });
+    }
+    return NextResponse.json({ message: "Snippet deleted successfully" }, { status: 200 });
+  } catch (error) {
+    console.error("Delete error:", error);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
-
-  return NextResponse.json({ message: "Snippet deleted successfully" }, { status: 200 });
 }
