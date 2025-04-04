@@ -28,18 +28,16 @@ export async function POST(req) {
 export async function DELETE(req, { params }) {
   await connectToDatabase();
 
-  const { name } = params;
-  console.log("Deleting snippet by name:", name);
+  const { id } = params;
 
   try {
-    const deletedSnippet = await Snippet.findOneAndDelete({ name });
+    const deletedSnippet = await Snippet.findByIdAndDelete(id);
     if (!deletedSnippet) {
       return NextResponse.json({ error: "Snippet not found" }, { status: 404 });
     }
-
     return NextResponse.json({ message: "Snippet deleted successfully" }, { status: 200 });
   } catch (error) {
-    console.error("Error deleting snippet:", error);
+    console.error("Delete error:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

@@ -49,10 +49,9 @@ export default function SnippetList({ snippets, theme, fetchSnippets }) {
             <Button variant="success" size="sm" className="ms-2" onClick={() => copyToClipboard(snippet.code)}>
               Copy Code
             </Button>
-            <Button variant="danger" size="sm" onClick={() => deleteSnippet(snippet.name)}>
-  Delete
-</Button>
-
+            <Button variant="danger" size="sm" className="ms-2" onClick={() => deleteSnippet(snippet._id)}>
+              Delete
+            </Button>
           </Card.Body>
         </Card>
       ))}
