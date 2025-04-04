@@ -10,17 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 export default function SnippetList({ snippets, theme, fetchSnippets }) {
   const [selectedSnippet, setSelectedSnippet] = useState(null);
 
-  const deleteSnippet = async (id) => {
+  const deleteSnippet = async (name) => {
     if (!window.confirm("Are you sure you want to delete this snippet?")) return;
+  
     try {
-      await axios.delete(`/api/snippets/${id}`);
-      fetchSnippets(); // Refresh list after deletion
+      await axios.delete(`/api/snippets/${name}`);
+      fetchSnippets();
       toast.success("Snippet deleted successfully!", { autoClose: 2000 });
     } catch (error) {
       console.error("Error deleting snippet:", error);
       toast.error("Failed to delete snippet!", { autoClose: 2000 });
     }
   };
+  
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code);
@@ -47,9 +49,10 @@ export default function SnippetList({ snippets, theme, fetchSnippets }) {
             <Button variant="success" size="sm" className="ms-2" onClick={() => copyToClipboard(snippet.code)}>
               Copy Code
             </Button>
-            <Button variant="danger" size="sm" className="ms-2" onClick={() => deleteSnippet(snippet._id)}>
-              Delete
-            </Button>
+            <Button variant="danger" size="sm" onClick={() => deleteSnippet(snippet.name)}>
+  Delete
+</Button>
+
           </Card.Body>
         </Card>
       ))}
