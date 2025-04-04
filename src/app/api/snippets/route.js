@@ -30,5 +30,9 @@ export async function DELETE(req) {
   const { id } = await req.json();
 
   const deletedSnippet = await Snippet.findByIdAndDelete(id);
+  if (!deletedSnippet) {
+    return NextResponse.json({ error: "Snippet not found" }, { status: 404 });
+  }
+
   return NextResponse.json({ message: "Snippet deleted successfully" }, { status: 200 });
 }

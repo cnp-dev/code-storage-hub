@@ -12,14 +12,10 @@ export default function SnippetList({ snippets, theme, fetchSnippets }) {
 
   const deleteSnippet = async (id) => {
     if (!window.confirm("Are you sure you want to delete this snippet?")) return;
-    try {
       await axios.delete(`/api/snippets/${id}`);
       fetchSnippets(); // Refresh list after deletion
       toast.success("Snippet deleted successfully!", { autoClose: 2000 });
-    } catch (error) {
-      console.error("Error deleting snippet:", error);
-      toast.error("Failed to delete snippet!", { autoClose: 2000 });
-    }
+  
   };
 
   const copyToClipboard = (code) => {
