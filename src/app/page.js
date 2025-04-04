@@ -84,7 +84,6 @@ export default function Home() {
         <option value="language">Sort by Language</option>
       </Form.Select>
       
-      {isAdmin && <SnippetForm fetchSnippets={fetchSnippets} />}
       <SnippetList snippets={filteredSnippets} theme={theme} fetchSnippets={fetchSnippets} isAdmin={isAdmin} />
     </Container>
   );
