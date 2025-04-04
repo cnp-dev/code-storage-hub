@@ -32,11 +32,6 @@ export default function Home() {
     }
   };
 
-  const checkAdminStatus = async () => {
-    // Simulate checking admin role (Replace with real API call)
-    setIsAdmin(true); // Change to `false` for normal users
-  };
-
   const filteredSnippets = snippets
     .filter(snippet =>
       snippet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -84,8 +79,7 @@ export default function Home() {
         <option value="language">Sort by Language</option>
       </Form.Select>
       
-      {isAdmin && <SnippetForm fetchSnippets={fetchSnippets} />}
-      <SnippetList snippets={filteredSnippets} theme={theme} fetchSnippets={fetchSnippets} isAdmin={isAdmin} />
+      <SnippetList snippets={filteredSnippets} theme={theme} fetchSnippets={fetchSnippets} />
     </Container>
   );
 }
