@@ -1,5 +1,5 @@
 import { connectToDatabase } from "@/lib/mongodb";
-import Snippet from "../../../models/Snippet";
+import Snippet from "../../models/Snippet";
 import { NextResponse } from "next/server";
 
 // ✅ GET: Fetch all snippets
