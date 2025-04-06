@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchSnippets();
-
+    checkAdminStatus();
     document.body.className = theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900";
 
     toast.info("🚀 Welcome to CodeStorage", {
