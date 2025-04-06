@@ -78,7 +78,7 @@ export default function Home() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <span className="flex-shrink-0 text-xl font-bold text-white">
-                Code Storage Hub
+                Code Storage Hub ☁️
               </span>
             </div>
 
