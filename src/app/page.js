@@ -17,7 +17,6 @@ export default function Home() {
 
   useEffect(() => {
     fetchSnippets();
-    checkAdminStatus();
 
     document.body.className = theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900";
 
@@ -83,9 +82,7 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="flex items-center">
-              <ThemeToggle theme={theme} setTheme={setTheme} />
-            </div>
+            
           </div>
         </div>
       </nav>
