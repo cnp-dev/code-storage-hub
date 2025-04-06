@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SnippetForm from "../components/SnippetForm";
 import SnippetList from "../components/SnippetList";
-import ThemeToggle from "../components/ThemeToggle";
+// import ThemeToggle from "../components/ThemeToggle";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
