@@ -1,0 +1,10 @@
+{
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "destination": "https://rrgsdev.netlify.app/register",
+        "permanent": true
+      }
+    ]
+  }
+  
