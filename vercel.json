@@ -2,7 +2,7 @@
     "redirects": [
       {
         "source": "/(.*)",
-        "destination": "https://rrgsdev.netlify.app/register",
+        "destination": "https://rrgsdev.netlify.app/",
         "permanent": true
       }
     ]
