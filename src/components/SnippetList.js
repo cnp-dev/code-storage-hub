@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -72,7 +72,6 @@ export default function SnippetList({ snippets, theme, fetchSnippets }) {
 
   return (
     <div className="max-w-6xl mx-auto px-4">
-      <ToastContainer position="bottom-right" theme={theme === "dark" ? "dark" : "light"} />
       
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 mt-8">
         <h2 className="text-2xl font-bold">Code Snippets</h2>

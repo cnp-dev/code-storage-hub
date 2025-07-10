@@ -71,8 +71,6 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}>
-      <ToastContainer position="top-right" theme= "dark" />
-
       <nav className="bg-gray-800 dark:bg-gray-950 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
