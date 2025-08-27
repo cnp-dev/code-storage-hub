@@ -52,14 +52,34 @@ export default function SnippetForm({ fetchSnippets }) {
   return (
     <div className="max-w-2xl mx-auto px-4">
       <ToastContainer position="bottom-right" />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053494212350614"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2053494212350614"
+     data-ad-slot="9209205719"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      
       
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-bold mb-4 text-primary">Add New Snippet</h2>
-        <AdBanner />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053494212350614"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2053494212350614"
+     data-ad-slot="9209205719"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
         <div className="space-y-4">
           <div>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053494212350614"
-     crossorigin="anonymous"></script>
             <label htmlFor="name" className="text-primary block text-sm font-medium mb-1">
               Snippet Name
             </label>

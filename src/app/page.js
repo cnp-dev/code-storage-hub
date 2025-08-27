@@ -155,7 +155,6 @@ export default function Home() {
           </div>
 
           <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          <AdBanner />
             Showing {filteredSnippets.length} of {snippets.length} snippets
           </div>
         </div>
@@ -171,8 +170,6 @@ export default function Home() {
       <footer className="bg-gray-800 dark:bg-gray-950 py-6 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-400">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053494212350614"
-     crossorigin="anonymous"></script>
             © {new Date().getFullYear()} Code Storage Hub. All rights reserved.
           </p>
         </div>
