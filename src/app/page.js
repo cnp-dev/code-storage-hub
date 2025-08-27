@@ -6,6 +6,7 @@ import SnippetList from "../components/SnippetList";
 // import ThemeToggle from "../components/ThemeToggle";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdBanner from "../components/AdBanner";
 
 export default function Home() {
   const [snippets, setSnippets] = useState([]);
@@ -77,6 +78,7 @@ export default function Home() {
             <div className="flex items-center">
               <span className="flex-shrink-0 text-xl font-bold text-white">
                 Code Storage Hub ☁️
+                <AdBanner />
               </span>
             </div>
 
@@ -154,6 +156,7 @@ export default function Home() {
           </div>
 
           <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+          <AdBanner />
             Showing {filteredSnippets.length} of {snippets.length} snippets
           </div>
         </div>

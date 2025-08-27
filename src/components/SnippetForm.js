@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AdBanner from "../components/AdBanner";
 
 export default function SnippetForm({ fetchSnippets }) {
   const [newSnippet, setNewSnippet] = useState({ name: "", language: "", code: "" });
@@ -53,7 +55,7 @@ export default function SnippetForm({ fetchSnippets }) {
       
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-bold mb-4 text-primary">Add New Snippet</h2>
-        
+        <AdBanner />
         <div className="space-y-4">
           <div>
             <label htmlFor="name" className="text-primary block text-sm font-medium mb-1">
@@ -112,6 +114,7 @@ export default function SnippetForm({ fetchSnippets }) {
             </button>
           </div>
         </div>
+        <AdBanner />
       </div>
     </div>
   );
