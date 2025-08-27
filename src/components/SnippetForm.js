@@ -58,6 +58,8 @@ export default function SnippetForm({ fetchSnippets }) {
         <AdBanner />
         <div className="space-y-4">
           <div>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053494212350614"
+     crossorigin="anonymous"></script>
             <label htmlFor="name" className="text-primary block text-sm font-medium mb-1">
               Snippet Name
             </label>
